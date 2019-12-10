@@ -26,7 +26,7 @@ const signup = async (req, res, next) => {
     );
   }
 
-  const { name, email, password, places } = req.body;
+  const { name, email, password } = req.body;
 
   let existingUser;
   try {
@@ -47,7 +47,7 @@ const signup = async (req, res, next) => {
     image:
       "https://as2.ftcdn.net/jpg/03/02/41/61/500_F_302416112_H2rTqA0KLtXzH10uyNQW0DCVQY70nSwv.jpg",
     password,
-    places
+    places: []
   });
 
   try {
