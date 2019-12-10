@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 require("dotenv").config();
@@ -27,4 +28,12 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message });
 });
 
-app.listen(5000);
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => {
+    app.listen(5000);
+  })
+  .catch(err => console.log(err));
