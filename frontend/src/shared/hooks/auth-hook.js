@@ -22,14 +22,14 @@ export const useAuth = () => {
         expiration: tokenExpirationDate.toISOString()
       })
     );
-  });
+  }, []);
 
   const logout = useCallback(() => {
     setToken(null);
     setTokenExpirationDate(null);
     setUserId(null);
     localStorage.removeItem("userData");
-  });
+  }, []);
 
   useEffect(() => {
     if (token && tokenExpirationDate) {
