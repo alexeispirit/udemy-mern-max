@@ -5,6 +5,7 @@ import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/FormElements/Button";
+import ImageUpload from "../../shared/components/FormElements/ImageUpload";
 import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { AuthContext } from "../../shared/context/auth-context";
@@ -111,6 +112,7 @@ const Auth = () => {
               onInput={inputHandler}
             />
           )}
+          {!isLoginMode && <ImageUpload id="image" center />}
           <Input
             id="email"
             element="input"
@@ -126,7 +128,7 @@ const Auth = () => {
             type="password"
             label="Password"
             validators={[VALIDATOR_MINLENGTH(6)]}
-            errorText="Please add a valid password, at least 5 characters"
+            errorText="Please add a valid password, at least 6 characters"
             onInput={inputHandler}
           />
           <Button type="submit" disabled={!formState.isValid}>
