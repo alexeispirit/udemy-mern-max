@@ -73,8 +73,7 @@ const createPlace = async (req, res, next) => {
     description,
     address,
     location: coordinates,
-    image:
-      "https://media.ceetiz.com/activity/ESBNYC003/thumbnails/642x450/shutterstock_129799142.jpg",
+    image: req.file.path,
     creator
   });
 
