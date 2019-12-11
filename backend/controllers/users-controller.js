@@ -43,8 +43,7 @@ const signup = async (req, res, next) => {
   const createdUser = new User({
     name,
     email,
-    image:
-      "https://as2.ftcdn.net/jpg/03/02/41/61/500_F_302416112_H2rTqA0KLtXzH10uyNQW0DCVQY70nSwv.jpg",
+    image: req.file.path,
     password,
     places: []
   });
@@ -75,12 +74,10 @@ const login = async (req, res, next) => {
     return next(error);
   }
 
-  res
-    .status(200)
-    .json({
-      message: "logged in",
-      user: existingUser.toObject({ getters: true })
-    });
+  res.status(200).json({
+    message: "logged in",
+    user: existingUser.toObject({ getters: true })
+  });
 };
 
 exports.getUsers = getUsers;
